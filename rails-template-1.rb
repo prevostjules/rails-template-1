@@ -23,10 +23,6 @@ gsub_file('Gemfile', /# gem 'redis'/, "gem 'redis'")
 
 # Assets
 ########################################
-run 'rm -rf app/assets/stylesheets'
-run 'rm -rf vendor'
-run 'curl -L https://github.com/lewagon/stylesheets/archive/master.zip > stylesheets.zip'
-run 'unzip stylesheets.zip -d app/assets && rm stylesheets.zip && mv app/assets/rails-stylesheets-master app/assets/stylesheets'
 
 # Dev environment
 ########################################
@@ -75,6 +71,7 @@ after_bundle do
 
   # Git ignore
   ########################################
+  run 'touch .gitignore'
   append_file '.gitignore', <<~TXT
     # Ignore .env file containing credentials.
     .env*
